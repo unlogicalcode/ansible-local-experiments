@@ -1,0 +1,5 @@
+---
+- name: tags_experiment
+  hosts: 127.0.0.1
+  roles:
+    - role: app_role

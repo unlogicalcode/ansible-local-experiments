@@ -1,0 +1,26 @@
+- name: "gather tags"
+  tags: always
+  set_fact:
+    contained_run_tags: 
+      - test_tag_foo
+      - test_tag_bar
+
+- name: "check fact"
+  tags: always
+  debug:
+    msg: "Debug: {{ contained_run_tags }}"
+
+- name: "main"
+  #tags: "{{contained_run_tags}}"
+  include_role:
+    name: test_role
+    #apply: 
+      #tags: "{{ include_run_tags }}"
+  vars:
+    include_run_tags: "{{ contained_run_tags }}"
+
+- name: "alternative"
+  tags: 
+    - app_tag_bar
+  include_role:
+    name: test_role

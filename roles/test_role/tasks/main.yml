@@ -1,0 +1,12 @@
+---
+- name: "show tag inherit foo"
+  tags:
+   - always
+  debug:
+    msg: "{{ include_run_tags }},{{ include_run_tags|type_debug }}"
+
+- name: "show tag inherit bar"
+  tags:
+   - test_tag_bar
+  debug:
+    msg: "test tag bar"
